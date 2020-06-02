@@ -33,7 +33,8 @@ def get_spf_record(domain):
         logger.info("[+] Couldn't resolve the domain {}".format(domain))
         sys.exit(1)
     for rdata in answers:
-        for record in rdata.strings:
+        fixedRecords = [''.join(rdata.strings)]
+        for record in fixedRecords:
             if 'spf1' in record:
                 spf_record=record
     if 'spf_record' in locals():
